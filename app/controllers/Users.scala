@@ -34,7 +34,20 @@ class Users @Inject()(val messagesApi: MessagesApi, val reactiveMongoApi: Reacti
 
   val userForm: Form[User] = Form(formMapping)
 
-  def index = TODO
+  def index = Action.async { implicit request =>
+
+
+    val cursor: Cursor[User] = collection.find(Json.obj()).cursor[User]
+
+    val futureUserList: Future[List[User]] = cursor.collect[List]()
+
+    futureUserList.map { user =>
+
+
+      (Ok(views.html.index(user)))
+
+    }
+  }
 
 
 
