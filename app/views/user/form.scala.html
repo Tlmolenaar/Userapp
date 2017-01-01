@@ -1,0 +1,27 @@
+@(userForm: Form[User])(implicit messages: Messages)
+
+@import helper._
+
+@main("Add a User"){
+
+<div class="form">
+
+<h2>Add a User</h2>
+
+@helper.form(action = routes.Users.save) {
+    @inputText(
+    userForm("name"),
+    '_label -> "Name"
+    )
+
+    @inputText(
+    userForm("email"),
+    '_label -> "Email"
+    )
+
+    <input type="submit" value="add user">
+    <a href="@routes.Users.index">Cancel</a>
+</div>
+
+    }
+}
