@@ -16,12 +16,16 @@ import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.json.Json
 import reactivemongo.api.Cursor
 import reactivemongo.play.json._
+import reactivemongo.play.json.collection.JSONCollection
 
 @Singleton
 class Users @Inject()(val messagesApi: MessagesApi, val reactiveMongoApi: ReactiveMongoApi)  extends Controller with I18nSupport with MongoController with ReactiveMongoComponents {
 
 
+
   def collection: JSONCollection = db.collection[JSONCollection]("user")
+
+  //Created a simple form.
 
   val formMapping = mapping (
     "name" -> nonEmptyText,
@@ -32,12 +36,39 @@ class Users @Inject()(val messagesApi: MessagesApi, val reactiveMongoApi: Reacti
 
   def index = TODO
 
-  def add = Action.async {
-    implicit request =>
 
-      Future.successful(
-        Ok(views.html.user.form(userForm)))
+
+  def add = Action {
+
+        Ok(views.html.user.form(userForm))
+
   }
 
-  def save = TODO
+  def save = Action.async {
+    implicit request =>
+
+      userForm.bindFromRequest.fold(
+        errors => {
+
+          Future.successful(
+            BadRequest(views.html.user.form(errors))
+          )
+        },
+
+        user => {
+
+          val futureResult = collection.insert(user)
+
+          futureResult.map(r=> Ok(r.message))
+
+          Future.successful(
+
+            Redirect("/")
+
+          )
+
+        }
+      )
+
+  }
 }
