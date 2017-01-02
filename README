@@ -1,4 +1,81 @@
-This is your new Play application
-=================================
+A simple Play 2.4 app with ReactiveMongo and Bootstrap
+=======================================================
 
-This file will be packaged with your application, when using `activator dist`.
+Author: Thomas Molenaar (tlmolenaar@hotmail.com)
+
+-Play 2.4
+-ReactiveMongo 0.11.14
+-Bootstrap 3
+
+What?
+-------------------------------------
+
+This is a simple app built with the Play framework consisting of a form where a user can enter his/her name and email.
+The input is then saved to a MongoDB database via ReactiveMongo and shown in a list on the index page.
+
+Every process is logged via the native Play logger which has been extended to show additional output as well as an
+additional Medical Diagnostic Context thread local which provides information about what method a user is in.
+
+
+How?
+-------------------------------------
+
+Most of the code is based on the documentation for the Play Framework and the ReactiveMongo driver.
+In addition several secondary sources were used to gain a better understanding some of the features of Play (see below)
+
+The process of building the app can be traced via the different commits to the Github repository.
+
+Bootstrap was used to provide basic styling.
+
+
+What's next?
+-------------------------------------
+
+The app is a work in progress and more features will be added in the future such as:
+
+- Further CRUD functionality
+- Automated tests
+- Search function
+
+Contact
+-------------------------------------
+
+If you have any questions or suggestions please feel free to contact me via tlmolenaar@hotmail.com
+
+External sources
+-------------------------------------
+Play:
+
+https://www.playframework.com/
+
+ReactiveMongo:
+
+http://reactivemongo.org/
+
+Bootstrap:
+
+http://getbootstrap.com/
+
+--------------------------------------
+
+ - For Play functionality:
+
+Introduction to Play Framework for Scala developers - https://www.youtube.com/watch?v=eNCerkVyQdc
+
+Play framework - Beginner's tutorial : Save an http post request to mongodb in 20 minutes.
+- https://www.youtube.com/watch?v=-iPKaW1RuTI
+
+Play framework recipes booklet  - http://alvinalexander.com/scala/scala-cookbook-play-framework-recipes-pdf-ebook
+
+Mastering Play Framework for Scala - Shiti Saxena  (ISBN13 9781783983803)
+
+
+ - For creating a form:
+
+How to add a form to a Play application
+- https://www.theguardian.com/info/developer-blog/2015/dec/30/how-to-add-a-form-to-a-play-application
+
+
+ - For setting up the logger and MDC:
+
+Play! Framework Logging Example - https://examples.javacodegeeks.com/enterprise-java/play-framework-logging-example/
