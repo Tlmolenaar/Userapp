@@ -4,24 +4,35 @@
 
 @main("Add a User"){
 
-<div class="form">
+<div class="container">
+    <div class="form-add">
 
-<h2>Add a User</h2>
+        <div class="form-header">
+            <h2>Add a User</h2>
+        </div>
 
-@helper.form(action = routes.Users.save) {
-    @inputText(
-    userForm("name"),
-    '_label -> "Name"
-    )
+            @helper.form(action = routes.Users.save) {
+                @inputText(
+                userForm("name"),
+                '_label -> "Name"
+                )
 
-    @inputText(
-    userForm("email"),
-    '_label -> "Email"
-    )
+                @inputText(
+                userForm("email"),
+                '_label -> "Email"
+                )
 
-    <input type="submit" value="add user">
-    <a href="@routes.Users.index">Cancel</a>
-</div>
+        <div class="form-button">
+            <button class="btn btn-lg btn-primary type="submit">Add User</button>
+        </div>
+
+
+        <div class="cancel">
+            <a href="@routes.Users.index">Cancel</a>
+        </div>
 
     }
+    </div>
+</div>
+
 }

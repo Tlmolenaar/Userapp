@@ -1,0 +1,32 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.container-fluid{
+    background: #ff7043;
+}
+
+.app-header{
+    color:white;
+}
+
+.container{
+    width: 360px;
+    margin: 100px auto;
+    background-color: #f7f7f
+}
+
+.form-add {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-header{
+  margin-left: 10%;
+}
+
+.cancel{
+   margin-top: 5px;
+
+}
